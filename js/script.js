@@ -1,54 +1,54 @@
 //generuje id  
 function randomString() {
-    var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
-    var str = '';
-    var i = 0;
-    for (i = 0; i < 10; i++) {
-        str += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return str;
+  var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
+  var str = '';
+  var i = 0;
+  for (i = 0; i < 10; i++) {
+    str += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return str;
 }
 function Column(name) {
-    var self = this; // przyda się dla funkcji zagnieżdżonych
+  var self = this; // przyda się dla funkcji zagnieżdżonych
 
-    this.id = randomString();
-    this.name = name;
-    this.$element = createColumn();
+  this.id = randomString();
+  this.name = name;
+  this.$element = createColumn();
 
-    function createColumn() {
-      //tworzenie nowych karteczek
-      var $column = $('<div>').addClass('column');
-      var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-      var $columnCardList = $('<ul>').addClass('column-card-list');
-      var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-      var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
+  function createColumn() {
+    //tworzenie nowych karteczek
+    var $column = $('<div>').addClass('column');
+    var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
+    var $columnCardList = $('<ul>').addClass('column-card-list');
+    var $columnDelete = $('<button>').addClass('btn-delete').text('x');
+    var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
   
-      //kasowanie kolumny po kliknieciu
-      $columnDelete.click(function() {
-        self.removeColumn();
-      });
-      //Dodawanie karteczki po kliknięciu w przycisk:
-      $columnAddCard.click(function(event) {
-        self.addCard(new Card(prompt("Wpisz nazwę karty")));
-      });
-      // konstrurowanie elementu kolumny
-       $column.append($columnTitle)
-      .append($columnDelete)
-      .append($columnAddCard)
-      .append($columnCardList);
+    //kasowanie kolumny po kliknieciu
+    $columnDelete.click(function() {
+      self.removeColumn();
+    });
+    //Dodawanie karteczki po kliknięciu w przycisk:
+    $columnAddCard.click(function(event) {
+      self.addCard(new Card(prompt("Wpisz nazwę karty")));
+    });
+    // konstrurowanie elementu kolumny
+    $column.append($columnTitle)
+    .append($columnDelete)
+    .append($columnAddCard)
+    .append($columnCardList);
 
-      // zwracanie nowej kolumny
-      return $column;
+    // zwracanie nowej kolumny
+    return $column;
     }
 }
 // dodanie metody: karty i funkcji 
 Column.prototype = {
-    addCard: function(card) {
-      this.$element.children('ul').append(card.$element);
-    },
-    removeColumn: function() {
-      this.$element.remove();
-    }
+  addCard: function(card) {
+    this.$element.children('ul').append(card.$element);
+  },
+  removeColumn: function() {
+    this.$element.remove();
+  }
 };
 
 //tworzenie kolmny
