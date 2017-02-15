@@ -55,34 +55,35 @@ Column.prototype = {
 function Card(description) {
   var self = this;
 
-this.id = randomString();
-this.description = description;
-this.$element = createCard(); //
+  this.id = randomString();
+  this.description = description;
+  this.$element = createCard(); //
 
   function createCard() {
     // implementacja tworzenia karty
     var $card = $('<li>').addClass('card');
     var $cardDescription = $('<p>').addClass('card-description').text(self.description);
     var $cardDelete = $('<button>').addClass('btn-delete').text('x');
-  }
+  
     //usuwanie karty
     $cardDelete.click(function(){
       self.removeCard();
     });
     //podpinanie zdarzenia usunięcia karty
     $cardDelete.click(function(){
-        self.removeCard();
+      self.removeCard();
     });
     //konstrukcja karty
     $card.append($cardDelete)
       .append($cardDescription);
     return $card;
+    }
 }
 
 Card.prototype = {
   removeCard: function() {
     this.$element.remove();
-}
+  }
 }
 // nasłuchiwanie zdarzeń
 var board = {
@@ -103,10 +104,10 @@ function initSortable() {
 
 // wyłaczenie możłiwośći zaznaczania teksty na kartach podczas przeciągania
 function initSortable() {
-    $('.column-card-list').sortable({
-      connectWith: '.column-card-list',
-      placeholder: 'card-placeholder'
-    }).disableSelection();
+  $('.column-card-list').sortable({
+    connectWith: '.column-card-list',
+    placeholder: 'card-placeholder'
+  }).disableSelection();
 }
 
 $('.create-column')
