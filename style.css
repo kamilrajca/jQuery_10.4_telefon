@@ -1,0 +1,9 @@
+.hidden {
+  display: none;
+}
+.alert {
+  position: absolute;
+  top: 0;
+  background: red;
+  padding: 20px;
+}

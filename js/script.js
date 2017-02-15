@@ -5,9 +5,15 @@ var pickRock = document.getElementById('js-playerPick_rock'),
     pickPaper = document.getElementById('js-playerPick_paper'),
     pickScissors = document.getElementById('js-playerPick_scissors');
 
+var alert = document.getElementById('js-alert');
+var alertText = document.getElementById('js-alert-text');
+var alertClose = document.getElementById('js-alert-close');
+
 pickRock.addEventListener('click', function() { playerPick('rock') });
 pickPaper.addEventListener('click', function() { playerPick('paper') });
 pickScissors.addEventListener('click', function() { playerPick('scissors') });
+
+alertClose.addEventListener('click', function() { closeAlert() });
 
 //wartości poczatkowe
 var gameState = 'notStarted',  //started // ended
@@ -100,13 +106,29 @@ function checkRoundWinner(playerPick, computerPick) {
     }
 
     if (winnerIs == 'player') {
-        playerResultElem.innerHTML = "Wygrana!";
         player.score++;
+
+        playerResultElem.innerHTML = "Wygrana!";
+        playerPointsElem.innerHTML = player.score;
+
+        showAlert('Wygrałeś');
     } else if (winnerIs == 'computer') {
-        computerResultElem.innerHTML = "Wygrana!";
         computer.score++;
+
+        computerResultElem.innerHTML = "Wygrana!";
+        computerPointsElem.innerHTML = computer.score;
     }
 
+    checkIsGameEnd();
+}
+
+function checkIsGameEnd(){
+    if(player.score >= 3){
+        alert('Wygrałeś');
+    }
+    else if(computer.score >= 3){
+        alert('Wygrał komputer');
+    }
 }
 
 function playerPick(playerPick) {
@@ -121,4 +143,12 @@ function playerPick(playerPick) {
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
+}
+
+function showAlert(text){
+    alert.classList.remove('hidden');
+    alertText.innerHTML = text;
+}
+function closeAlert(){
+    alert.classList.add('hidden');
 }
