@@ -10,7 +10,8 @@ Telefon.prototype.printInfo = function() {
 var galaxyS6 = new Telefon ('Samsung Galaxy s6', 'srebrny', 2300);
 var iPhone6 = new Telefon ('iPhone 6s', 'biały', 3499);
 var onePlus = new Telefon ('OnePlus One', 'czarny', 2290);
-  galaxyS6.printInfo();
-  iPhone6.printInfo();
-  onePlus.printInfo();
+  
+galaxyS6.printInfo();
+iPhone6.printInfo();
+onePlus.printInfo();
 
