@@ -33,9 +33,9 @@ function Column(name) {
     });
     // konstrurowanie elementu kolumny
     $column.append($columnTitle)
-    .append($columnDelete)
-    .append($columnAddCard)
-    .append($columnCardList);
+      .append($columnDelete)
+      .append($columnAddCard)
+      .append($columnCardList);
 
     // zwracanie nowej kolumny
     return $column;
@@ -74,10 +74,11 @@ function Card(description) {
       self.removeCard();
     });
     //konstrukcja karty
-    $card.append($cardDelete)
+    $card
+      .append($cardDelete)
       .append($cardDescription);
     return $card;
-    }
+  }
 }
 
 Card.prototype = {

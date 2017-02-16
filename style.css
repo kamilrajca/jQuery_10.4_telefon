@@ -1,3 +1,10 @@
 .card-placeholder {
+  background-color: purple;
+}
+.create-column {
+  background-color: red;
+}
+.card {
   background-color: green;
+  color: black;
 }
