@@ -39,7 +39,7 @@ function Column(name) {
 
     // zwracanie nowej kolumny
     return $column;
-    }
+  }
 }
 // dodanie metody: karty i funkcji 
 Column.prototype = {
